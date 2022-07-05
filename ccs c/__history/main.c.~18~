@@ -1,0 +1,75 @@
+#include <16f628a.h>
+#include <stdlib.h>
+#fuses INTRC_IO,NOMCLR,NOWDT,NOPROTECT,NOBROWNOUT,NOLVP,NOPUT,NOCPD // Denetleyici konfigürasyon ayarlarý
+#use DELAY(CLOCK=4MHz)
+#use fast_io(a)
+#use fast_io(b)
+
+
+
+Void Main()
+{  
+set_tris_a(0xff);
+set_tris_b(0x00);
+output_b(0x00);
+
+setup_comparator(A0_A3_A1_A2);  //A0 ile A1 analog giriþleri karþýlaþtýrýlacak
+   
+   
+   while(true)
+   {
+
+   if(input(pin_a7)==0) //dolap kapalý
+   {
+   int sayac = 0;
+   
+   for(int i =0; i<100; i++)
+   {
+   if(C1OUT ==1)
+   {
+   sayac++;
+   }
+   }
+   
+   if(sayac>=30) //müzik çalýyor
+   {
+   output_high(pin_b1); //stopa bas
+   delay_ms(111);
+   output_low(pin_b1);  //stopu býrak
+   delay_ms(1111);
+   }
+   
+   sayac = 0;
+   }
+   
+   if(input(pin_a7)==1) //dolap açýk
+   {
+   int sayac = 0;
+   
+   for(int i =0; i<100; i++)
+   {
+   if(C1OUT ==1)
+   {
+   sayac++;
+   }
+   }
+   
+   if(sayac<=10) //müzik çalmýyor
+   {
+   sayac = 0;
+   output_high(pin_b1); //starta bas
+   delay_ms(111);
+   output_low(pin_b1);  //startý býrak
+   delay_ms(111);
+   output_high(pin_b2);  //nexte bas
+   delay_ms(111);
+   output_low(pin_b2);  //nexti býrak
+   delay_ms(1111);
+   }
+   
+   sayac = 0;
+   }
+   
+   delay_ms(666);
+   }
+}

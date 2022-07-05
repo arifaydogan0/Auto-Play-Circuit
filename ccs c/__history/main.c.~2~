@@ -1,0 +1,29 @@
+#include <16f628a.h>
+#fuses INTRC_IO,NOMCLR,NOWDT,NOPROTECT,NOBROWNOUT,NOLVP,NOPUT,NOCPD // Denetleyici konfigürasyon ayarlarý
+#use DELAY(CLOCK=4MHz)
+
+
+
+Void Main()
+{
+   set_tris_a(0b00000011); //a0, a1 giriþ, gerisi çýkýþ
+   set_tris_b(0xFF);
+   
+   output_b(0x00);
+   
+   setup_comparator(A0_A1);
+   
+   int ilkdeger = input(pin_a0);
+   
+   while(1)
+   {
+      if(input(pin_b0))
+      {
+      //dolap açýk
+      }
+      else if(!input(pin_b0))
+      {
+      //dolap kapalý
+      }
+   }
+}

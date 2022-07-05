@@ -1,0 +1,69 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01F.6   C1OUT
+01F.7   C2OUT
+020-021 strtok.save
+022-025 _Randseed
+026     MAIN.aciksure
+027     MAIN.kapalisure
+028     MAIN.sayac
+029     MAIN.i
+02A     MAIN.sayac
+02B     MAIN.i
+02C     @delay_ms1.P1
+02C     MAIN.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+000004  @delay_ms1
+000019  @cinit1
+000019  MAIN
+000021  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\aydog\Documents\AA\Projeler\PROJELER\Uygunlar Hoparlör (Ccs C, Proteus)\ccs c\
+
+Project Files:
+    main.c                                                  [03-Tem-22 22:19  CRC=4BC3743B]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16f628a.h [02-Oca-15 14:36  CRC=BA8C6278]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stdlib.h [07-Ara-14 16:58  CRC=07F0FCBD]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\stddef.h [05-Eyl-14 10:47  CRC=897CEC6C]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\string.h [05-Eyl-14 10:49  CRC=18AFD095]
+    ..\..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\ctype.h [03-Oca-08 13:55  CRC=2D1F019F]
+
+Source signature=0AAB93AF
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=60B2
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F628A
+    Pointer Size:   16
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

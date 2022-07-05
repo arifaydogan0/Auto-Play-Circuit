@@ -1,0 +1,58 @@
+#include <16f628a.h>
+#include <stdlib.h>
+#fuses INTRC_IO,NOMCLR,NOWDT,NOPROTECT,NOBROWNOUT,NOLVP,NOPUT,NOCPD // Denetleyici konfigürasyon ayarlarý
+#use DELAY(CLOCK=4MHz)
+#use fast_io(a)
+#use fast_io(b)
+
+
+
+Void Main()
+{  
+set_tris_a(0xff);
+set_tris_b(0x00);
+output_b(0x00);
+
+setup_comparator(A0_A3_A1_A2);  //A0 ile A1 analog giriþleri karþýlaþtýrýlacak
+int aciksure = 0;
+int kapalisure = 0;
+   
+   while(true)
+   {
+   //C1OUT == 1 hosinyali ref sinyalden yüksek
+   
+   if(input(pin_a7)==0) //dolap kapalý
+   {
+   //output_high(pin_b1); //stopa bas
+   //output_low(pin_b1);  //stopu býrak
+   
+   if(kapalisure == 0)  //yeni kapanmýs
+   {
+      output_high(pin_b1);
+      delay_ms(88);
+      output_low(pin_b1);
+      kapalisure++;
+      aciksure = 0;
+   }
+   }
+   else if(input(pin_a7)==1) //dolap açýk
+   {
+   //output_high(pin_b1); //starta bas
+   //output_low(pin_b1);  //startý býrak
+   
+   //output_high(pin_b2);  //nexte bas
+   //output_low(pin_b2);  //nexti býrak
+   
+   if(aciksure == 0)  //yeni acilmis
+   {
+      output_high(pin_b2);
+      delay_ms(111);
+      output_low(pin_b2);
+      aciksure++;
+      kapalisure = 0;
+   }
+   }
+   
+   delay_ms(666);
+   }
+}
